@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="sans-serif" font-size="12">
+<rect width="720" height="400" fill="#fff"/>
+<text x="60" y="28" font-size="16" font-weight="bold" fill="#24292f">バーンアップ (想定)</text>
+<line x1="60" x2="550" y1="350.0" y2="350.0" stroke="#eaeef2"/>
+<text x="52" y="354.0" text-anchor="end" fill="#57606a">0</text>
+<line x1="60" x2="550" y1="290.0" y2="290.0" stroke="#eaeef2"/>
+<text x="52" y="294.0" text-anchor="end" fill="#57606a">11</text>
+<line x1="60" x2="550" y1="230.0" y2="230.0" stroke="#eaeef2"/>
+<text x="52" y="234.0" text-anchor="end" fill="#57606a">21</text>
+<line x1="60" x2="550" y1="170.0" y2="170.0" stroke="#eaeef2"/>
+<text x="52" y="174.0" text-anchor="end" fill="#57606a">32</text>
+<line x1="60" x2="550" y1="110.0" y2="110.0" stroke="#eaeef2"/>
+<text x="52" y="114.0" text-anchor="end" fill="#57606a">42</text>
+<line x1="60" x2="550" y1="50.0" y2="50.0" stroke="#eaeef2"/>
+<text x="52" y="54.0" text-anchor="end" fill="#57606a">53</text>
+<text x="60.0" y="368" text-anchor="middle" fill="#57606a">D0</text>
+<text x="114.4" y="368" text-anchor="middle" fill="#57606a">D1</text>
+<text x="168.9" y="368" text-anchor="middle" fill="#57606a">D2</text>
+<text x="223.3" y="368" text-anchor="middle" fill="#57606a">D3</text>
+<text x="277.8" y="368" text-anchor="middle" fill="#57606a">D4</text>
+<text x="332.2" y="368" text-anchor="middle" fill="#57606a">D5</text>
+<text x="386.7" y="368" text-anchor="middle" fill="#57606a">D6</text>
+<text x="441.1" y="368" text-anchor="middle" fill="#57606a">D7</text>
+<text x="495.6" y="368" text-anchor="middle" fill="#57606a">D8</text>
+<text x="550.0" y="368" text-anchor="middle" fill="#57606a">D9</text>
+<text x="16" y="200.0" transform="rotate(-90 16 200.0)" text-anchor="middle" fill="#57606a">Story Points</text>
+<line x1="60" x2="60" y1="50" y2="350" stroke="#8c959f"/>
+<line x1="60" x2="550" y1="350" y2="350" stroke="#8c959f"/>
+<polyline points="60.0,123.6 114.4,123.6 168.9,106.6 223.3,106.6 277.8,106.6 332.2,106.6 386.7,78.3 441.1,78.3 495.6,78.3 550.0,78.3" fill="none" stroke="#8250df" stroke-width="2.5"/>
+<circle cx="60.0" cy="123.6" r="3.5" fill="#8250df"/>
+<circle cx="114.4" cy="123.6" r="3.5" fill="#8250df"/>
+<circle cx="168.9" cy="106.6" r="3.5" fill="#8250df"/>
+<circle cx="223.3" cy="106.6" r="3.5" fill="#8250df"/>
+<circle cx="277.8" cy="106.6" r="3.5" fill="#8250df"/>
+<circle cx="332.2" cy="106.6" r="3.5" fill="#8250df"/>
+<circle cx="386.7" cy="78.3" r="3.5" fill="#8250df"/>
+<circle cx="441.1" cy="78.3" r="3.5" fill="#8250df"/>
+<circle cx="495.6" cy="78.3" r="3.5" fill="#8250df"/>
+<circle cx="550.0" cy="78.3" r="3.5" fill="#8250df"/>
+<line x1="566" x2="590" y1="60" y2="60" stroke="#8250df" stroke-width="2.5"/>
+<text x="596" y="64" fill="#24292f">総スコープ</text>
+<polyline points="60.0,350.0 114.4,338.7 168.9,310.4 223.3,293.4 277.8,282.1 332.2,219.8 386.7,202.8 441.1,202.8 495.6,129.2 550.0,78.3" fill="none" stroke="#1a7f37" stroke-width="2.5"/>
+<circle cx="60.0" cy="350.0" r="3.5" fill="#1a7f37"/>
+<circle cx="114.4" cy="338.7" r="3.5" fill="#1a7f37"/>
+<circle cx="168.9" cy="310.4" r="3.5" fill="#1a7f37"/>
+<circle cx="223.3" cy="293.4" r="3.5" fill="#1a7f37"/>
+<circle cx="277.8" cy="282.1" r="3.5" fill="#1a7f37"/>
+<circle cx="332.2" cy="219.8" r="3.5" fill="#1a7f37"/>
+<circle cx="386.7" cy="202.8" r="3.5" fill="#1a7f37"/>
+<circle cx="441.1" cy="202.8" r="3.5" fill="#1a7f37"/>
+<circle cx="495.6" cy="129.2" r="3.5" fill="#1a7f37"/>
+<circle cx="550.0" cy="78.3" r="3.5" fill="#1a7f37"/>
+<line x1="566" x2="590" y1="82" y2="82" stroke="#1a7f37" stroke-width="2.5"/>
+<text x="596" y="86" fill="#24292f">完了</text>
+</svg>

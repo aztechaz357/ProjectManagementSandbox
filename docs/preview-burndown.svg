@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="sans-serif" font-size="12">
+<rect width="720" height="400" fill="#fff"/>
+<text x="60" y="28" font-size="16" font-weight="bold" fill="#24292f">バーンダウン (想定)</text>
+<line x1="60" x2="550" y1="350.0" y2="350.0" stroke="#eaeef2"/>
+<text x="52" y="354.0" text-anchor="end" fill="#57606a">0</text>
+<line x1="60" x2="550" y1="290.0" y2="290.0" stroke="#eaeef2"/>
+<text x="52" y="294.0" text-anchor="end" fill="#57606a">9</text>
+<line x1="60" x2="550" y1="230.0" y2="230.0" stroke="#eaeef2"/>
+<text x="52" y="234.0" text-anchor="end" fill="#57606a">18</text>
+<line x1="60" x2="550" y1="170.0" y2="170.0" stroke="#eaeef2"/>
+<text x="52" y="174.0" text-anchor="end" fill="#57606a">27</text>
+<line x1="60" x2="550" y1="110.0" y2="110.0" stroke="#eaeef2"/>
+<text x="52" y="114.0" text-anchor="end" fill="#57606a">36</text>
+<line x1="60" x2="550" y1="50.0" y2="50.0" stroke="#eaeef2"/>
+<text x="52" y="54.0" text-anchor="end" fill="#57606a">45</text>
+<text x="60.0" y="368" text-anchor="middle" fill="#57606a">D0</text>
+<text x="114.4" y="368" text-anchor="middle" fill="#57606a">D1</text>
+<text x="168.9" y="368" text-anchor="middle" fill="#57606a">D2</text>
+<text x="223.3" y="368" text-anchor="middle" fill="#57606a">D3</text>
+<text x="277.8" y="368" text-anchor="middle" fill="#57606a">D4</text>
+<text x="332.2" y="368" text-anchor="middle" fill="#57606a">D5</text>
+<text x="386.7" y="368" text-anchor="middle" fill="#57606a">D6</text>
+<text x="441.1" y="368" text-anchor="middle" fill="#57606a">D7</text>
+<text x="495.6" y="368" text-anchor="middle" fill="#57606a">D8</text>
+<text x="550.0" y="368" text-anchor="middle" fill="#57606a">D9</text>
+<text x="16" y="200.0" transform="rotate(-90 16 200.0)" text-anchor="middle" fill="#57606a">残り Story Points</text>
+<line x1="60" x2="60" y1="50" y2="350" stroke="#8c959f"/>
+<line x1="60" x2="550" y1="350" y2="350" stroke="#8c959f"/>
+<polyline points="60.0,83.3 114.4,96.7 168.9,110.0 223.3,130.0 277.8,143.3 332.2,216.7 386.7,203.3 441.1,203.3 495.6,290.0 550.0,350.0" fill="none" stroke="#0969da" stroke-width="2.5"/>
+<circle cx="60.0" cy="83.3" r="3.5" fill="#0969da"/>
+<circle cx="114.4" cy="96.7" r="3.5" fill="#0969da"/>
+<circle cx="168.9" cy="110.0" r="3.5" fill="#0969da"/>
+<circle cx="223.3" cy="130.0" r="3.5" fill="#0969da"/>
+<circle cx="277.8" cy="143.3" r="3.5" fill="#0969da"/>
+<circle cx="332.2" cy="216.7" r="3.5" fill="#0969da"/>
+<circle cx="386.7" cy="203.3" r="3.5" fill="#0969da"/>
+<circle cx="441.1" cy="203.3" r="3.5" fill="#0969da"/>
+<circle cx="495.6" cy="290.0" r="3.5" fill="#0969da"/>
+<circle cx="550.0" cy="350.0" r="3.5" fill="#0969da"/>
+<line x1="566" x2="590" y1="60" y2="60" stroke="#0969da" stroke-width="2.5"/>
+<text x="596" y="64" fill="#24292f">残り (全体)</text>
+<polyline points="60.0,83.3 114.4,112.7 168.9,142.7 223.3,172.0 277.8,202.0 332.2,231.3 386.7,261.3 441.1,290.7 495.6,320.7 550.0,350.0" fill="none" stroke="#8c959f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<line x1="566" x2="590" y1="82" y2="82" stroke="#8c959f" stroke-width="2.5" stroke-dasharray="6 4"/>
+<text x="596" y="86" fill="#24292f">理想線</text>
+<polyline points="60.0,216.7 114.4,230.0 168.9,243.3 223.3,263.3 277.8,276.7 332.2,350.0 386.7,350.0 441.1,350.0 495.6,350.0 550.0,350.0" fill="none" stroke="#bf3989" stroke-width="2.5"/>
+<circle cx="60.0" cy="216.7" r="3.5" fill="#bf3989"/>
+<circle cx="114.4" cy="230.0" r="3.5" fill="#bf3989"/>
+<circle cx="168.9" cy="243.3" r="3.5" fill="#bf3989"/>
+<circle cx="223.3" cy="263.3" r="3.5" fill="#bf3989"/>
+<circle cx="277.8" cy="276.7" r="3.5" fill="#bf3989"/>
+<circle cx="332.2" cy="350.0" r="3.5" fill="#bf3989"/>
+<circle cx="386.7" cy="350.0" r="3.5" fill="#bf3989"/>
+<circle cx="441.1" cy="350.0" r="3.5" fill="#bf3989"/>
+<circle cx="495.6" cy="350.0" r="3.5" fill="#bf3989"/>
+<circle cx="550.0" cy="350.0" r="3.5" fill="#bf3989"/>
+<line x1="566" x2="590" y1="104" y2="104" stroke="#bf3989" stroke-width="2.5"/>
+<text x="596" y="108" fill="#24292f">残り (Sprint 1)</text>
+<polyline points="332.2,216.7 386.7,203.3 441.1,203.3 495.6,290.0 550.0,350.0" fill="none" stroke="#bc4c00" stroke-width="2.5"/>
+<circle cx="332.2" cy="216.7" r="3.5" fill="#bc4c00"/>
+<circle cx="386.7" cy="203.3" r="3.5" fill="#bc4c00"/>
+<circle cx="441.1" cy="203.3" r="3.5" fill="#bc4c00"/>
+<circle cx="495.6" cy="290.0" r="3.5" fill="#bc4c00"/>
+<circle cx="550.0" cy="350.0" r="3.5" fill="#bc4c00"/>
+<line x1="566" x2="590" y1="126" y2="126" stroke="#bc4c00" stroke-width="2.5"/>
+<text x="596" y="130" fill="#24292f">残り (Sprint 2)</text>
+</svg>

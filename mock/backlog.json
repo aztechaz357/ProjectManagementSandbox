@@ -1,0 +1,22 @@
+{
+  "_comment": "added_day=Issueが作られる営業日, start_day=In Progressになる営業日, done_day=Doneになる営業日 (Day 0 = 開始日)",
+  "items": [
+    { "key": "S1-01", "title": "デザインシステム (共通コンポーネント) 導入", "points": 2, "sprint": "Sprint 1", "added_day": 0, "start_day": 0, "done_day": 1 },
+    { "key": "S1-02", "title": "ログイン画面の UI 刷新", "points": 5, "sprint": "Sprint 1", "added_day": 0, "start_day": 0, "done_day": 2 },
+    { "key": "S1-03", "title": "SSO 連携 (SAML)", "points": 8, "sprint": "Sprint 1", "added_day": 0, "start_day": 0, "done_day": 5,
+      "body": "想定より難航し Sprint 2 初日に完了する (持ち越しの例)。" },
+    { "key": "S1-04", "title": "ユーザープロフィール API", "points": 3, "sprint": "Sprint 1", "added_day": 0, "start_day": 1, "done_day": 3 },
+    { "key": "S1-05", "title": "お知らせ一覧ページ", "points": 2, "sprint": "Sprint 1", "added_day": 0, "start_day": 2, "done_day": 4 },
+    { "key": "S1-06", "title": "【追加】監査ログ出力 (法務要件)", "points": 3, "sprint": "Sprint 1", "added_day": 2, "start_day": 3, "done_day": 5,
+      "labels": ["scope-creep"], "body": "Day 2 に法務から追加要求 (スコープ増加の例)。" },
+
+    { "key": "S2-01", "title": "全文検索機能", "points": 5, "sprint": "Sprint 2", "added_day": 0, "start_day": 5, "done_day": 8 },
+    { "key": "S2-02", "title": "通知設定画面", "points": 3, "sprint": "Sprint 2", "added_day": 0, "start_day": 5, "done_day": 6 },
+    { "key": "S2-03", "title": "ダッシュボード ウィジェット", "points": 5, "sprint": "Sprint 2", "added_day": 0, "start_day": 6, "done_day": 9 },
+    { "key": "S2-04", "title": "アクセシビリティ対応 (WCAG AA)", "points": 3, "sprint": "Sprint 2", "added_day": 0, "start_day": 6, "done_day": 8 },
+    { "key": "S2-05", "title": "E2E テスト整備", "points": 2, "sprint": "Sprint 2", "added_day": 0, "start_day": 7, "done_day": 9 },
+    { "key": "S2-06", "title": "リリース手順書・移行リハーサル", "points": 2, "sprint": "Sprint 2", "added_day": 0, "start_day": 8, "done_day": 9 },
+    { "key": "S2-07", "title": "【追加】モバイル表示崩れ修正", "points": 5, "sprint": "Sprint 2", "added_day": 6, "start_day": 6, "done_day": 8,
+      "labels": ["scope-creep"], "body": "Day 6 に受け入れテストで発覚 (スコープ増加の例)。" }
+  ]
+}

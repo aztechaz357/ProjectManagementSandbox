@@ -1,0 +1,23 @@
+{
+  "project_title": "社内ポータル v1.0 リリース (Mock)",
+  "project_description": "バーンダウン / バーンアップ / フィーバーチャートを Insights で試すためのモックプロジェクト",
+  "labels": {
+    "mock": { "color": "6f42c1", "description": "モックプロジェクトの作業 Issue" },
+    "scope-creep": { "color": "d73a4a", "description": "途中で追加されたスコープ" },
+    "fever": { "color": "fbca04", "description": "フィーバーチャート用トラッカー (集計から除外)" }
+  },
+  "sprints": [
+    { "title": "Sprint 1", "start_day": 0, "length_days": 5 },
+    { "title": "Sprint 2", "start_day": 5, "length_days": 5 }
+  ],
+  "plan": {
+    "critical_chain_days": 6,
+    "project_buffer_days": 4,
+    "holidays": []
+  },
+  "fever_zones": {
+    "_comment": "縦軸(バッファ消費率)の境界線。[進捗0%のときの値, 進捗100%のときの値] を直線で結ぶ",
+    "yellow": [0.10, 0.70],
+    "red": [0.30, 0.90]
+  }
+}
