@@ -558,6 +558,8 @@ def cmd_preview(a) -> None:
                        "values": [r["sprint_remaining"][s["title"]] if r["day"] >= s["start_day"] else None for r in rows]})
     svg_line_chart(DOCS / "preview-burndown.svg", "バーンダウン (想定)", labels, series, "残り Story Points")
     svg_fever_chart(DOCS / "preview-fever.svg", rows, cfg["fever_zones"], "フィーバーチャート (想定)")
+    if not FEVER_SVG.exists():  # 実データの図は setup / fever で上書きされる。それまではゾーンだけの空チャート
+        svg_fever_chart(FEVER_SVG, [], cfg["fever_zones"], "フィーバーチャート — まだデータがありません (setup 後に更新)")
     print("Day | done/total | remaining | progress | buffer | zone")
     for r in rows:
         print(f"{r['day']:>3} | {r['done_points']:>2}/{r['total_points']:<2}     | {r['remaining']:>9} | "
