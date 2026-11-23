@@ -73,9 +73,24 @@ GitHub Actions が **毎営業日 1 日ずつ進めます**。Insights の履歴
    git add mock/state.json docs && git commit -m "Set up mock project" && git push
    ```
 
-5. Actions 用のトークンを登録する
-   Projects (v2) は `GITHUB_TOKEN` では操作できないため、`repo` と `project` スコープの classic PAT を作り、
-   リポジトリの **Settings → Secrets and variables → Actions** に `PROJECT_TOKEN` として登録します。
+5. Actions 用のトークンを `.env` で管理して登録する
+   Projects (v2) は `GITHUB_TOKEN` では操作できないため、`repo` と `project` スコープの classic PAT を作ります
+   (個人アカウントの Project は fine-grained PAT 非対応のため)。
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   `.env` の `PROJECT_TOKEN=` の後ろにトークンを貼り付けてから、権限を確認して Actions Secret に登録します。
+
+   ```bash
+   python scripts/pm.py token --push
+   ```
+
+   - `.env` は `.gitignore` 済みでコミットされません。トークンは標準入力経由で `gh secret set` に渡します。
+   - `.env` に `PROJECT_TOKEN` があると、ローカルの `pm.py` もそのトークンで動きます (空なら `gh auth login` のログインを使用)。
+   - トークンを作り直したら `.env` を書き換えて同じコマンドを再実行します。権限確認だけなら `python scripts/pm.py token`。
+
    以降は平日 09:00 JST に [daily-simulation.yml](.github/workflows/daily-simulation.yml) が 1 日分進めます。
 
 ## Insights でのチャート設定
@@ -152,6 +167,7 @@ Insights には散布図がないため、2 つの見せ方を用意していま
 | `python scripts/pm.py tick [--day N]` | Issue / Status を Day N (既定: 今日) の状態にする。何度実行しても同じ結果 |
 | `python scripts/pm.py fever [--day N]` | Project の実データからフィーバー指標を計算して更新 |
 | `python scripts/pm.py status` | 現在の Day と各 Issue の状態を表示 |
+| `python scripts/pm.py token [--push]` | `.env` の `PROJECT_TOKEN` の権限を確認 (`--push` で Actions Secret に登録) |
 
 `--day` で日を飛ばすと Issue の状態はすぐ変わりますが、Insights の履歴は「実際に変更された時刻」で記録されます。
 グラフの形を見たいときは、毎営業日 1 回ずつ進めてください。

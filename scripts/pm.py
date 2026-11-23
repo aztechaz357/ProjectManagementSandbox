@@ -8,18 +8,25 @@
   python scripts/pm.py tick [--day N]   # 今日 (または Day N) の状態まで Issue / Status を進める
   python scripts/pm.py fever [--day N]  # 実データから進捗率・バッファ消費率を計算し、トラッカーと SVG を更新
   python scripts/pm.py status           # 現在の Day と集計を表示
+  python scripts/pm.py token [--push]   # .env の PROJECT_TOKEN を検証 (--push で Actions Secret に登録)
+
+.env に PROJECT_TOKEN=ghp_xxx を書くと、gh の呼び出しにそのトークンを使います (GH_TOKEN が既にあればそちら優先)。
 """
 from __future__ import annotations
 
 import argparse
 import datetime as dt
 import json
+import os
 import re
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+DOTENV = ROOT / ".env"
+TOKEN_KEY = "PROJECT_TOKEN"
+REQUIRED_SCOPES = {"repo", "project"}
 CONFIG = ROOT / "mock" / "config.json"
 BACKLOG = ROOT / "mock" / "backlog.json"
 STATE = ROOT / "mock" / "state.json"
@@ -50,8 +57,25 @@ def save(path: Path, obj) -> None:
     path.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def gh(*args: str, json_out: bool = False, check: bool = True):
-    r = subprocess.run(["gh", *args], capture_output=True, text=True, encoding="utf-8")
+def load_dotenv(path: Path = DOTENV) -> None:
+    """KEY=VALUE 形式の .env を読み、未設定の環境変数だけ埋める。PROJECT_TOKEN は GH_TOKEN として gh に渡す。"""
+    if path.exists():
+        for raw in path.read_text(encoding="utf-8-sig").splitlines():
+            line = raw.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.removeprefix("export ").split("=", 1)
+            key, value = key.strip(), value.strip()
+            if len(value) >= 2 and value[0] == value[-1] and value[0] in "\"'":
+                value = value[1:-1]
+            if key and value and key not in os.environ:
+                os.environ[key] = value
+    if os.environ.get(TOKEN_KEY) and not os.environ.get("GH_TOKEN"):
+        os.environ["GH_TOKEN"] = os.environ[TOKEN_KEY]
+
+
+def gh(*args: str, json_out: bool = False, check: bool = True, stdin: str | None = None):
+    r = subprocess.run(["gh", *args], capture_output=True, text=True, encoding="utf-8", input=stdin)
     if r.returncode != 0:
         if check:
             sys.exit(f"[error] gh {' '.join(args[:3])} failed:\n{r.stderr.strip()}")
@@ -567,7 +591,36 @@ def cmd_preview(a) -> None:
     print("wrote docs/preview-burnup.svg, docs/preview-burndown.svg, docs/preview-fever.svg")
 
 
+def cmd_token(a) -> None:
+    token = os.environ.get(TOKEN_KEY)
+    if not token:
+        sys.exit(f"[error] {TOKEN_KEY} がありません。.env.example を .env にコピーしてトークンを書いてください。")
+    # トークンの権限 (X-OAuth-Scopes ヘッダ) を確認。fine-grained トークンはこのヘッダを返さない
+    env = {**os.environ, "GH_TOKEN": token}
+    r = subprocess.run(["gh", "api", "-i", "user"], capture_output=True, text=True, encoding="utf-8", env=env)
+    if r.returncode != 0:
+        sys.exit("[error] トークンで GitHub に認証できませんでした (期限切れ・削除済み・貼り間違いの可能性)")
+    headers = r.stdout.split("\r\n\r\n" if "\r\n\r\n" in r.stdout else "\n\n", 1)[0]
+    scopes_line = next((h for h in headers.splitlines() if h.lower().startswith("x-oauth-scopes:")), None)
+    login = json.loads(r.stdout[len(headers):].strip() or "{}").get("login", "?")
+    if scopes_line is None:
+        print(f"user={login}: fine-grained トークンのため権限は自動確認できません")
+    else:
+        scopes = {s.strip() for s in scopes_line.split(":", 1)[1].split(",") if s.strip()}
+        missing = REQUIRED_SCOPES - scopes
+        print(f"user={login} scopes={', '.join(sorted(scopes)) or '(なし)'}")
+        if missing:
+            sys.exit(f"[error] 権限が足りません: {', '.join(sorted(missing))}")
+        print("OK: repo / project の権限があります")
+    if a.push:
+        st = load(STATE) if STATE.exists() else {}
+        repo = st.get("repo") or gh("repo", "view", "--json", "nameWithOwner", "-q", ".nameWithOwner")
+        gh("secret", "set", TOKEN_KEY, "--repo", repo, stdin=token)  # 引数でなく標準入力で渡す
+        print(f"Actions Secret {TOKEN_KEY} を {repo} に登録しました")
+
+
 def main() -> None:
+    load_dotenv()
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("setup", help="Project / フィールド / Issue を作成")
@@ -582,11 +635,15 @@ def main() -> None:
         p.add_argument("--day", type=int, help="Day を明示 (既定: 開始日からの営業日数)")
         p.set_defaults(fn=fn)
     sub.add_parser("preview", help="GitHub を使わず想定チャートを出力").set_defaults(fn=cmd_preview)
+    t = sub.add_parser("token", help=f".env の {TOKEN_KEY} を検証")
+    t.add_argument("--push", action="store_true", help=f"検証後、リポジトリの Actions Secret {TOKEN_KEY} に登録")
+    t.set_defaults(fn=cmd_token)
     a = ap.parse_args()
     a.fn(a)
 
 
 if __name__ == "__main__":
-    if hasattr(sys.stdout, "reconfigure"):
-        sys.stdout.reconfigure(encoding="utf-8")
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     main()
