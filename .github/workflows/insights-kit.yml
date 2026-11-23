@@ -52,7 +52,6 @@ jobs:
     uses: aztechaz357/projects-insights-kit/.github/workflows/run.yml@v1
     with:
       project_url: "https://github.com/users/aztechaz357/projects/3" # ← ここを書き換える
-      kit_ref: main # 検証用: 修正版を使う
       mode: ${{ inputs.mode || 'daily' }}
       planned_end_date: ${{ inputs.planned_end_date || '' }}
       start_date: ${{ inputs.start_date || '' }}
