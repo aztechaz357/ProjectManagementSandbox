@@ -27,7 +27,7 @@ jobs:
       GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
       DAY_ARG: ${{ github.event.inputs.day && format('--day {0}', github.event.inputs.day) || '' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Check setup
         id: check
@@ -35,7 +35,7 @@ jobs:
           if [ -f mock/state.json ]; then echo "ready=true" >> "$GITHUB_OUTPUT"
           else echo "::notice::mock/state.json がないためスキップ (先にローカルで setup を実行)"; fi
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         if: steps.check.outputs.ready == 'true'
         with:
           python-version: "3.12"
